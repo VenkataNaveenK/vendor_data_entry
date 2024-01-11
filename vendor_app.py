@@ -40,7 +40,7 @@ action = st.selectbox(
 
 if action == "Onboard New Vendor":
     st.markdown("Enter the details of the new vendor below.")
-    with st.form(key="vendor_form"):
+    with st.form(key="vendor_form", clear_on_submit=True):
         company_name = st.text_input(label="Company Name*")
         business_type = st.selectbox(
             "Business Type*", options=BUSINESS_TYPES, index=None
@@ -85,7 +85,7 @@ elif action == "Update Existing Vendor":
         0
     ]
 
-    with st.form(key="update_form"):
+    with st.form(key="update_form", clear_on_submit=True):
         company_name = st.text_input(
             label="Company Name*", value=vendor_data["CompanyName"]
         )
@@ -150,7 +150,7 @@ elif action == "View All Vendors":
 # Delete Vendor
 elif action == "Delete Vendor":
     vendor_to_delete = st.selectbox(
-        "Select a Vendor to Delete", options=existing_data["CompanyName"].tolist()
+        "Select a Vendor to Delete", options=existing_data["CompanyName"].tolist(), index=None
     )
 
     if st.button("Delete"):
